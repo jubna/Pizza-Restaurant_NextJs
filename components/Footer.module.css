@@ -1,0 +1,62 @@
+.container{
+    height: calc(100vh - 100px);
+    background-color: #444;
+    display: flex;
+} 
+.image{
+    background-size: 100% 100% ;
+    background-image: url("../public/img/bg.png") ;
+    flex:2;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.quotes{
+color: white;
+font-size: 25px;
+font-weight: 500;
+flex:1;
+padding:60px 50px;
+font-style: oblique;
+}
+.quotes p{
+    color: rgb(209, 185, 157);
+}
+.findOurRestaurant,.workingHours{
+display: flex;
+flex-direction: column;
+flex: 1;
+ padding:60px 50px; 
+}
+.heading{
+    color:  #f5b937;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.address{
+    color: lightgray;
+    font-size: 16px;
+    margin-bottom: 15px
+}
+@media screen and (max-width:1200px) {
+    .image{
+        display: none;
+    }
+    .container{
+        height: 100%;
+    }
+}
+@media screen and (max-width:680px) {
+   .container{
+       flex-direction: column;
+       height: 100%;
+       text-align: center;
+   }
+   .quotes,.findOurRestaurant,.workingHours{
+       border-bottom: 1px solid rgb(118, 118, 118);
+   
+    }
+    .quotes{
+        font-size: 20px;
+    }
+  }

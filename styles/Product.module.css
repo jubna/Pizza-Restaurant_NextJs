@@ -1,0 +1,145 @@
+
+.container {
+    height: calc(100vh - 100px);
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }
+  
+  .left {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    .imgContainer {
+    width: 80%;
+    height: 80%;
+    position: relative;
+  }
+  .right {
+    flex: 1;
+    padding: 60px;
+  }
+  .heading{
+      font-size: 30px;
+      font-weight: 500;
+      text-transform: uppercase;
+  }
+  .price{
+      color: #d1411e;
+      font-size: 20px;
+      font-weight: 400;
+      margin-top: 10px;
+    /* border-bottom: 1px solid #d1411e;
+    width: 40px; */
+  }
+  .desc{
+      font-size: 18px;
+      margin-top: 10px;
+  }
+  .choose{
+      font-size: 20px;
+      font-weight: 500;
+      margin-top: 10px;
+  }
+  .sizeWrapper{
+      display: flex;
+  }
+  .sizeContainer{
+      margin-top: 15px;
+    position: relative;
+    width: 80px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  .sizeTag{
+    background-color: #0e8a40;
+    color: rgb(252, 236, 236);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 12px;
+    width: 50px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right:10px;
+
+  }
+  .checkBox{
+      display: flex;
+      margin-top: 10px;
+      font-size: 18px;
+  }
+  .checkBox div{
+      margin-right: 10px;
+  }
+  .qty{
+      display: flex ;
+      margin-top: 20px;
+      font-size: 20px;
+  }
+  .counterBtn{
+      background-color: white;
+      color: #d1411e;
+      border: 2px solid #d1411e;
+      padding:5px 10px;
+      font-size: 20px;
+      cursor: pointer;
+  }
+  .addToCart{
+      margin-left: 20px;
+      background-color:#d1411e;
+      color:white;
+      padding: 7px 20px;
+      border: none;
+      font-weight: 700;
+      font-size: 20px;
+      cursor: pointer;
+  }
+  .addToCart:hover{
+      opacity: .7;
+      transition: .3s ease-out;
+  }
+  @media screen and (max-width:680px) {
+    .container{
+      flex-direction: column;
+      height: auto;
+      margin-top: 30px;
+    }
+    .imgContainer {
+        width: 70vw;
+        height: 70vw;
+      }
+
+    .checkBox,.qty{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .checkBox div{
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .right{
+        text-align: center;
+    }
+    .heading{
+        font-size: 25px;
+    }
+    .price,.choose{
+        font-size: 20px;
+    }
+    .sizeWrapper{
+        justify-content: center;
+    }
+    .counterBtn{
+         padding:  0px 5px;
+    }
+    .addToCart{
+        margin-top: 20px;
+        font-size: 18px;
+        margin-left: 0;
+    }
+  }

@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 40px 0px;
+}
+.foodName{
+    color: #d1411e;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.foodimg{
+    margin-top: 10px;
+    cursor: pointer;
+}
+.foodPrice{
+    color: #444;
+    font-family: 500;
+    margin-top: 10px;
+    font-weight: 500;
+}
+.foodDetail{
+    width:40%;
+    text-align: center;
+margin-top: 10px;
+color: #444;
+
+}

@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 10px;
+}
+.heading{
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+}
+.details{
+    font-size: 20px;
+margin: auto;
+color: #444;
+width: 70%;
+margin-top: 30px;
+}
+.wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+@media screen and (max-width:680px) {
+    .details{
+        text-align: center;
+        width: 85%;
+    }
+  }

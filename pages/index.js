@@ -10,7 +10,6 @@ export default function Home() {
       <Head>
         <title>Pizza Restaurant</title>
         <meta name="description" content="Pizza Ordering App" />
-        <link rel="icon" href="" />
       </Head>
 
       <main className={styles.main}>

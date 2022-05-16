@@ -2,7 +2,6 @@ import React from 'react'
 import styles from "./Navbar.module.css"
 import Image from 'next/image'
 import telephone from "../public/img/telephone.png"
-import logo from "../public/img/logo.png"
 import cart from "../public/img/cart.png"
 import router from 'next/router'
 import Menu from './Menu'

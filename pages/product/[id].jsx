@@ -33,8 +33,8 @@ let productData = data.filter(function (el)
     const incrementCounter = () => setCounter(counter + 1);
 
     let decrementCounter = () => setCounter(counter - 1);
-    if (counter <= 0) {
-        decrementCounter = () => setCounter(0);
+    if (counter <= 1) {
+        decrementCounter = () => setCounter(1);
     }
     const [checkedState, setCheckedState] = useState(
         new Array(additional_ingredients.length).fill(false)

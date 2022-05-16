@@ -27,8 +27,8 @@ function Navbar() {
                     {/* <Image src={logo} width={160} height={70} alt="logo" /> */}
                     Pizza
                     </li>
-                    <li>Events</li>
-                    <li>Blog</li>
+                    <li  onClick={()=>router.push("/login")}>Login</li>
+                    <li  onClick={()=>router.push("/register")}>Register</li>
                     <li>Contact</li>
                 </ul>
             </div>

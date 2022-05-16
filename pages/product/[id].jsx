@@ -7,13 +7,6 @@ import { useRouter } from 'next/router';
 import {data} from "../../data/data"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// const data = {
-//     id: 1,
-//     img: "/img/pizza.png",
-//     name: "campagnola",
-//     price: [15, 20, 25],
-//     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-// }
 
 const additional_ingredients = [
     "Double ingredients", "Extra Cheese", "Spicy Sause", "Garlic Sauce"

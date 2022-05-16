@@ -5,6 +5,8 @@ import sizeImg from "../../public/img/size.png"
 
 import { useRouter } from 'next/router';
 import {data} from "../../data/data"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // const data = {
 //     id: 1,
 //     img: "/img/pizza.png",
@@ -17,6 +19,11 @@ const additional_ingredients = [
     "Double ingredients", "Extra Cheese", "Spicy Sause", "Garlic Sauce"
 ]
 function Product() {
+    const notify = () =>{ 
+        toast("Added to Cart!")
+        // router.push("/checkout")
+        // alert("hh")
+      };
     const router=useRouter()
    let pId=router.query.id;
    console.log(pId);
@@ -122,7 +129,8 @@ let productData = data.filter(function (el)
                             -
                         </button>
                     </div>
-                    <button className={styles.addToCart} >ADD TO CART</button>
+                    <button className={styles.addToCart} onClick={notify} >ADD TO CART</button>
+                    <ToastContainer />
                 </div>
             </div>
 

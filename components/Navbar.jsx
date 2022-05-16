@@ -37,7 +37,7 @@ function Navbar() {
                 </ul>
             </div>
             <div className={styles.toggle}>
-                <button onClick={()=>setToggle(!toggle)} >
+                <button onClick={()=>setToggle(!toggle)} style={{backgroundColor:"white",border:"none"}} >
                     <Image src={toggler} alt="" width={30} height={30} />
                 </button>
             </div>

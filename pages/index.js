@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import axios from "axios";
+
 import styles from '../styles/Home.module.css'
 import Slider from "../components/Slider"
 import Menu from "../components/Menu"
 
-export default function Home() {
+export default function Home({pizzaList}) {
+  // console.log(pizzaList);
   return (
     <div className={styles.container}>
       <Head>
@@ -14,10 +17,20 @@ export default function Home() {
 
       <main className={styles.main}>
       <Slider/>
-      <Menu/>
+      <Menu data={pizzaList}/>
       </main>
 
      
     </div>
   )
 }
+
+export const getServerSideProps = async () => {
+
+  const res = await axios.get("http://localhost:3000/api/products");
+  return {
+    props: {
+      pizzaList: res.data
+    },
+  };
+};

@@ -3,10 +3,11 @@ import styles from "./MenuList.module.css"
 import Image from 'next/image'
 import pizza from "../public/img/pizza.png"
 import router from 'next/router'
-import {data} from "../data/data"
+import Link from 'next/link'
+// import {data} from "../data/data"
 
 
-function menuList() {
+function menuList({data}) {
 return(
     // <div className={styles.container}>
     <>
@@ -14,11 +15,14 @@ return(
  
  (
       <div  className={styles.container} key={index}>
-    <div className={styles.foodimg} onClick={()=>{router.push(`/product/${item.id}`)}}>
+        <Link href={`/product/${item._id}`} passHref>
+         <div className={styles.foodimg}>
     <Image src={item.image} alt="food" width={200} height={200} objectFit="contain"/>
     </div>
+        </Link>
+   
     <div className={styles.foodName}>{item.name}</div>
-    <div className={styles.foodPrice}>${item.price[1]}</div>
+    <div className={styles.foodPrice}>${item.price[0]}</div>
     <div className={styles.foodDetail}>
     {item.desc}
     </div>

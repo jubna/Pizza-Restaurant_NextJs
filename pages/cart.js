@@ -3,9 +3,13 @@ import styles from "../styles/Cart.module.css"
 import Image from 'next/image'
 import pizza from "../public/img/pizza.png"
 import router from 'next/router'
+import { useDispatch, useSelector } from 'react-redux';
 
 
-function cart() {
+function Cart() {
+
+const cart= useSelector(state=>state.cartlist)
+
   return (
         <div className={styles.container}>
           <div className={styles.left}>
@@ -20,39 +24,44 @@ function cart() {
                 <th>Total</th>
                 </tr>
               </thead>
-              <tbody className={styles.tr}>
-                <tr>
-                <td>
-                  <div className={styles.imgContainer}>
-                    <Image
-                      src="/img/pizza.png"
-                      layout="fill"
-                      objectFit="cover"
-                      alt=""
-                    />
-                  </div>
-                </td>
-                <td>
-                  <span className={styles.name}>Campagnola</span>
-                </td>
-                <td>
-                  <span className={styles.extras}>
-                    Double ingredient, spicy sauce
-                  </span>
-                </td>
-                <td>
-                  <span className={styles.price}>$15.00</span>
-                </td>
-                <td>
-                  <span className={styles.quantity}>2</span>
-                </td>
-                <td>
-                  <span className={styles.total}>$30.00</span>
-                </td>
-                </tr>
-            
-              </tbody>
-              <tbody className={styles.tr}>
+           
+              {cart?.products?.map((item,index)=>{
+                return(
+                  <tbody className={styles.tr} key={index}>
+                  <tr>
+                  <td>
+                    <div className={styles.imgContainer}>
+                      <Image
+                        src={item.image}
+                        layout="fill"
+                        objectFit="cover"
+                        alt=""
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <span className={styles.name}>{item.name}</span>
+                  </td>
+                  <td>
+                    <span className={styles.extras}>
+                     {item.additionalIng.text}
+                    </span>
+                  </td>
+                  <td>
+                    <span className={styles.price}>${item.totalprice}</span>
+                  </td>
+                  <td>
+                    <span className={styles.quantity}>{item.counter}</span>
+                  </td>
+                  <td>
+                    <span className={styles.total}>${item.totalprice*item.counter}</span>
+                  </td>
+                  </tr>
+              
+                </tbody>
+                )
+              })}
+              {/* <tbody className={styles.tr}>
                 <tr>
                 <td>
                   <div className={styles.imgContainer}>
@@ -83,7 +92,7 @@ function cart() {
                 </td>
                 </tr>
               
-              </tbody>
+              </tbody> */}
             </table>
           </div>
           <div className={styles.right}>
@@ -105,4 +114,4 @@ function cart() {
   )
 }
 
-export default cart
+export default Cart

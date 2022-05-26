@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./Menu.module.css"
 import MenuList from './MenuList'
-function Menu() {
+function Menu({data}) {
     return (
         <div className={styles.container}>
             <div className={styles.heading}>
@@ -13,7 +13,7 @@ function Menu() {
                 sit amet, consectetur adipiscing elit.
             </div>
            <div className={styles.wrapper}>
-                <MenuList/>
+                <MenuList data={data} />
                 {/* <MenuList/>
                 <MenuList/>
                 <MenuList/> */}

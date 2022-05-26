@@ -49,6 +49,7 @@ function Footer() {
           <div>12.00 - 24.00</div>
         </div>
       </div>
+
     </div>
   )
 }

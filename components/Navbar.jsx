@@ -6,9 +6,13 @@ import telephone from "../public/img/telephone.png"
 import cart from "../public/img/cart.png"
 import router from 'next/router'
 import Menu from './Menu'
+import { useSelector } from 'react-redux'
 
 
 function Navbar() {
+
+    const quantity=useSelector((state)=>state.cartlist.quantity)
+
     const [toggle,setToggle]=useState(false)
     return (
         <div className={styles.container}>
@@ -66,7 +70,7 @@ function Navbar() {
                 <div className={styles.cart} onClick={()=>router.push("/cart")}>
                 <Image src={cart} width={30} height={30} alt="cart" />
                 <div className={styles.counter}>
-                       2
+                       {quantity}
                     </div>
                 </div>
             </div>

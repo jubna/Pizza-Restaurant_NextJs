@@ -2,6 +2,8 @@ import React ,{useEffect, useState}from 'react'
 import styles from "../styles/Cart.module.css"
 import Image from 'next/image'
 import pizza from "../public/img/pizza.png"
+
+import axios from "axios";
 import router from 'next/router'
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,12 +13,14 @@ import {
   PayPalButtons,
   usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
+import Link from 'next/link'
+import OrderDetails from '../components/OrderDetails'
 
 function Cart() {
   const dispatch=useDispatch()
 const cart= useSelector(state=>state.cartlist.products)
 const other=useSelector(state=>state.cartlist)
-console.log(other);
+const [cash,setCash]=useState(false)
 const [paypalEnable,setPaypalEnable]=useState(false)
 let ids=[]
 let filtered=[]
@@ -38,6 +42,19 @@ const handleCheckout=()=>{
 const amount = "2";
 const currency = "USD";
 const style = {"layout":"vertical"};
+
+const createOrder = async (data) => {
+  try {
+    const res = await axios.post("http://localhost:3000/api/orders", data);
+    if (res.status === 201) {
+      dispatch(reset());
+      router.push(`/order/${res.data._id}`);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
@@ -80,8 +97,14 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                 });
         }}
         onApprove={function (data, actions) {
-            return actions.order.capture().then(function () {
-                // Your code here after capture the order
+            return actions.order.capture().then(function (details) {
+              const shipping = details.purchase_units[0].shipping;
+              createOrder({
+                customer: shipping.name.full_name,
+                address: shipping.address.address_line_1,
+                total:  other.totalPrice,
+                method: 1,
+              });
             });
         }}
     />
@@ -158,7 +181,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
             
               {paypalEnable?
               <>
-                  <button className={styles.button}>CASH ON DELIVERY</button>
+              <button className={styles.button} onClick={()=>{setCash(true)}}>CASH ON DELIVERY</button>
               <PayPalScriptProvider
                 options={{
                     "client-id": "test",
@@ -176,6 +199,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
       :
         <button className={styles.button} onClick={handleCheckout}>CHECKOUT NOW!</button>
       }
+      {cash && <OrderDetails createOrder={createOrder}/>}
             </div>
           </div>
         </div>

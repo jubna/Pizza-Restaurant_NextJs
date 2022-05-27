@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "../styles/Register.module.css"
+import styles from "../../styles/Register.module.css"
 import router from 'next/router'
 export default function login() {
     return (
@@ -15,7 +15,7 @@ export default function login() {
                         <input type="password" placeholder='Password'/>
                 </form>
                 <button className={styles.button}>Login</button>
-                <p>Don&apos;t have an account?<span onClick={()=>{router.push("/register")}}>Register</span></p>
+                {/* <p>Don&apos;t have an account?<span onClick={()=>{router.push("/register")}}>Register</span></p> */}
             </div>
         </div>
     )

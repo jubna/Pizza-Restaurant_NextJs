@@ -1,19 +1,18 @@
 import React from 'react'
-import styles from "../styles/Cart.module.css"
+import styles from "../../styles/Cart.module.css"
 import Image from 'next/image'
-import checked from "../public/img/checked.png"
+import checked from "../../public/img/checked.png"
 import router from 'next/router'
-
-
+import axios from "axios";
 const status = [
-  { name: "Order Confirmed", status: 1 },
-  { name: "Preparing", status: 1 },
-  { name: "On the way", status: 0 },
-  { name: "Delivered", status: 0 }
+  { name: "Order Confirmed"},
+  { name: "Preparing" },
+  { name: "On the way" },
+  { name: "Delivered" }
 ]
 
-function cart() {
-
+function cart({orderData}) {
+console.log(orderData);
   return (
     <div className={styles.container} style={{paddingBottom:60}}>
       <div className={styles.left}>
@@ -21,7 +20,7 @@ function cart() {
           <thead>
             <tr className={styles.trTitle}>
               <th>Order ID</th>
-              <th>Date</th>
+              {/* <th>Date</th> */}
               <th>Address</th>
               <th>Total</th>
             </tr>
@@ -29,18 +28,18 @@ function cart() {
           <tbody>
             <tr className={styles.tr} style={{ textAlign: "left" }}>
               <td>
-                <span className={styles.orderId}>123456</span>
+                <span className={styles.orderId}>{orderData._id}</span>
               </td>
-              <td>
+              {/* <td>
                 <span className={styles.date}>
                   11-05-2022
                 </span>
+              </td> */}
+              <td>
+                <span className={styles.adrs}>{orderData.address}</span>
               </td>
               <td>
-                <span className={styles.adrs}>Hilton North,st:10,<br />Apartmen No:12A</span>
-              </td>
-              <td>
-                <span className={styles.total}>$30.00</span>
+                <span className={styles.total}>${orderData.total}</span>
               </td>
             </tr>
           </tbody>
@@ -50,7 +49,7 @@ function cart() {
           {status.map((item, index) => {
             return (
               <div key={index} className={styles.status}>
-                {item.status == 1 ?
+                {orderData.status == 1 ?
                   <Image src={checked} width={30} height={30} alt="" />
                   :
                   <div className={styles.yellowCircle}></div>
@@ -69,13 +68,13 @@ function cart() {
         <div className={styles.wrapper}>
           <h2 className={styles.title}>CART TOTAL</h2>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Subtotal:</b>$75.00
+            <b className={styles.totalTextTitle}>Subtotal:</b>${orderData.total}
           </div>
           <div className={styles.totalText}>
             <b className={styles.totalTextTitle}>Discount:</b>$0.00
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b>$75.00
+            <b className={styles.totalTextTitle}>Total:</b>${orderData.total}
           </div>
 
         </div>
@@ -83,5 +82,16 @@ function cart() {
     </div>
   )
 }
+
+export const getServerSideProps = async ({ params }) => {
+
+  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+  return {
+      props: {
+          orderData: res.data
+      },
+  };
+};
+
 
 export default cart

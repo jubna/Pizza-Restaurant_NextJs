@@ -129,6 +129,26 @@ font-weight: 500;
       content: "Total: ";
       font-weight: 500;
     }
+    .pro_Image::before{
+      content: "Image: ";
+      font-weight: 500;
+    }
+    .pro_Id::before{
+      content: "Id: ";
+      font-weight: 500;
+    }
+    .pro_title::before{
+      content: "Title: ";
+      font-weight: 500;
+    }
+    .pro_price::before{
+      content: "Price: ";
+      font-weight: 500;
+    }
+    .pro_action::before{
+      content: "Action: ";
+      font-weight: 500;
+    }
     .statusWrapper{
     margin-bottom: 30px;
     margin-top: 30px;
@@ -169,7 +189,8 @@ font-weight: 500;
       font-size: 24px;
     }
   
-    .extras,.price,.quantity,.orderId,.adrs,.date{
+    .extras,.price,.quantity,.orderId,.adrs,.date,
+    .pro_Id,.pro_Image,.pro_price::before,.pro_title::before,.pro_action{
       font-size: 22px;
     }
   .orderId::before{
@@ -194,6 +215,26 @@ font-weight: 500;
     }
     .total::before{
       content: "Total: ";
+      font-weight: 500;
+    }
+    .pro_Image::before{
+      content: "Image: ";
+      font-weight: 500;
+    }
+    .pro_Id::before{
+      content: "Id: ";
+      font-weight: 500;
+    }
+    .pro_title::before{
+      content: "Title: ";
+      font-weight: 500;
+    }
+    .pro_price::before{
+      content: "Price: ";
+      font-weight: 500;
+    }
+    .pro_action::before{
+      content: "Action: ";
       font-weight: 500;
     }
   

@@ -85,7 +85,7 @@ console.log(orderData);
 
 export const getServerSideProps = async ({ params }) => {
 
-  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+  const res = await axios.get(`https://food-ordering-next-js-lemon.vercel.app/api/orders/${params.id}`);
   return {
       props: {
           orderData: res.data

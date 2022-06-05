@@ -45,7 +45,7 @@ const style = {"layout":"vertical"};
 
 const createOrder = async (data) => {
   try {
-    const res = await axios.post("http://localhost:3000/api/orders", data);
+    const res = await axios.post("https://food-ordering-next-js-lemon.vercel.app/api/orders", data);
     if (res.status === 201) {
       dispatch(reset());
       router.push(`/order/${res.data._id}`);
